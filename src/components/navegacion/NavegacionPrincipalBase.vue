@@ -41,6 +41,22 @@
       </li>
       <li>
         <router-link
+          to="/visualizaciones"
+          class="nav-hipervinculo"
+        >
+          Visualizaciones
+        </router-link>
+      </li>
+      <li>
+        <router-link
+          to="/otra-vista"
+          class="nav-hipervinculo"
+        >
+          Otra vista
+        </router-link>
+      </li>
+      <li>
+        <router-link
           to="/creditos"
           class="nav-hipervinculo"
         >

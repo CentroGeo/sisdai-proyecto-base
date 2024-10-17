@@ -8,4 +8,3 @@
     <h1>Otra vista</h1>
   </main>
 </template>
-

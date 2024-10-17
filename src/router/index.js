@@ -26,6 +26,16 @@ const routes = [
     component: PaginaInicio,
   },
   {
+    path: '/visualizaciones',
+    name: 'Visualizaciones',
+    component: () => import('@/views/PaginaVisualizaciones.vue'),
+  },
+  {
+    path: '/otra-vista',
+    name: 'Otra Vista',
+    component: () => import('@/views/PaginaOtraVista.vue'),
+  },
+  {
     path: '/creditos',
     name: 'Créditos',
     component: () => import('@/views/PaginaCreditos.vue'),
