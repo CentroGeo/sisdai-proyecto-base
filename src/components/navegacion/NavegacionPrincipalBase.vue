@@ -41,10 +41,10 @@
       </li>
       <li>
         <router-link
-          to="/visualizaciones"
+          to="/creditos"
           class="nav-hipervinculo"
         >
-          Visualizaciones
+          Créditos
         </router-link>
       </li>
       <li>
@@ -53,14 +53,6 @@
           class="nav-hipervinculo"
         >
           Otra vista
-        </router-link>
-      </li>
-      <li>
-        <router-link
-          to="/creditos"
-          class="nav-hipervinculo"
-        >
-          Créditos
         </router-link>
       </li>
     </ul>
