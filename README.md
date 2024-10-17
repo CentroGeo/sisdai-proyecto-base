@@ -9,7 +9,7 @@ de los repositorios.**
 - Hecha en Vue 2
 - Vista de Créditos
 - Vista de Investigadoras
-- Vista de Visualizaciones
+- Vista de ejemplo vacía
 - Menú de accesibilidad
 
 **Para consultar cambios y actualizaciones de este proyecto ir al archivo
@@ -51,7 +51,6 @@ en su equipo a través del **protocolo HTTPS**.
 | main.js                     | src/                       | Archivo en donde estan precargados sisdai-css y sisdai-componentes y se configura el matomo                                                                            |
 | App.vue                     | src/                       | Archivo con la estructura basica de un proyecto, como cabeceras, pies de página, barra de navegación, menú de accesibilidad y componente con información de despliegue |
 | PaginaInicio.vue            | src/views/                 | Vista en Vue con un ejemplo de portada para iniciar el contenido de un nuevo capitulo eni                                                                              |
-| PaginaVisualizaciones.vue   | src/views/| Vista en Vue con un ejemplo de una gráfica de barras y un mapa base.                                                                                                   |
 | PaginaCreditos.vue          |src/views| Vista en Vue con ejemplos de créditos para organizaciones y personas investigadoras.                                                                                   |
 | PaginaInvestigadora.vue     |src/views| Vista en Vue de un perfil de persona investigadora.|
 | PaginaOtraVista.vue         |src/views|Ejemplo de una vista en Vue vacía.|
@@ -71,7 +70,6 @@ eni-capitulo-demo/
     │   └── index.js #variables accesibilidad
     └── views/
         └── PaginaInicio.vue
-        └── PaginaVisualizaciones.vue
         └── PaginaCreditos.vue
         └── PaginaInvestigadora.vue
         └── PaginaOtraVista.vue
