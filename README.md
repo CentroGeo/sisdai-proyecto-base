@@ -7,6 +7,7 @@ de los repositorios.**
 
 **Contenido de esta versión**
 - Hecha en Vue 2
+- Identidad gráfica del gobierno federal para el periodo 2024-2030
 - Vista de Créditos
 - Vista de Investigadoras
 - Vista de ejemplo vacía
