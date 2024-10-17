@@ -1,41 +1,100 @@
-<!--This file is part of eni-capitulo-demo.-->
-
-<!--eni-capitulo-demo is free software: you can redistribute it and/or modify-->
-<!--it under the terms of the GNU Lesser General Public License as published by the-->
-<!--Free Software Foundation, either version 3 of the License, or-->
-<!--(at your option) any later version.-->
-
-<!--eni-capitulo-demo is distributed in the hope that it will be useful,-->
-<!--but WITHOUT ANY WARRANTY; without even the implied warranty of-->
-<!--MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General-->
-<!--Public License for more details.-->
-
-<!--You should have received a copy of the GNU Lesser General Public License along-->
-<!--with eni-capitulo-demo. If not, see <https://www.gnu.org/licenses/>.-->
-
 <script setup>
+/*global globalThis*/
 import store from '@/store'
-import { onMounted, watch, ref, nextTick } from 'vue'
+import { computed, nextTick, onMounted, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router/composables'
+
 const ruta = useRoute()
 const router = useRouter()
-import NavegacionPrincipalBase from './components/navegacion/NavegacionPrincipalBase.vue'
-
 const infoDespliegue = {
-  version_proyecto: process.env.PACKAGE_VERSION,
-  actualizacion_proyecto: process.env.DATE_DEPLOY,
-  entorno_proyecto: process.env.ENV_DEPLOY,
+  versionProyecto: process.env.PACKAGE_VERSION,
+  actualizacionProyecto: process.env.DATE_DEPLOY,
+  entornoProyecto: process.env.ENV_DEPLOY,
 }
+
+const sisdaiMenuAccesibilidad = ref()
+const menuAccesiblidadAbierto = ref()
 const entradaInicial = ref(true)
 
-// Agrega aria-hidden al elemento con icono
 onMounted(async () => {
+  // Para obtener el estado del botón de accesiblidad
+  menuAccesiblidadAbierto.value = computed(
+    () =>
+      sisdaiMenuAccesibilidad.value?._setupState?.menuAccesibilidadEstaAbierto
+        .value
+  )
   await router.onReady(() => {
     ruta.path === '/' ? (entradaInicial.value = false) : null
   })
+
+  // agregandoAriaHidden()
 })
 
-// Con este watch definimos a donde se moverá el focus al cambiar de ruta
+// TO DEVS: oigans esto hay que procurarlo desde la construccion del componente
+// no se debe dejar nuestra chamba al navegador
+
+// onUpdated(agregandoAriaHidden)
+// function agregandoAriaHidden() {
+//   // ocultamos la lectura de los íconos que son enlaces externos
+//   document.querySelectorAll('span.icono-enlace-externo').forEach(el => {
+//     el.setAttribute('aria-hidden', 'true')
+//   })
+// }
+
+const vistaSimplificada = computed(
+  () => store.state.accesibilidad.vista_simplificada
+)
+const tipografiaAccesible = computed(
+  () => store.state.accesibilidad.tipografia_accesible
+)
+const enlacesSubrayados = computed(
+  () => store.state.accesibilidad.enlaces_subrayados
+)
+
+watch(vistaSimplificada, () => {
+  const matomoPaq = globalThis._paq || { push() {} }
+  const eventName = vistaSimplificada.value ? 'activacion' : 'desactivacion'
+  matomoPaq.push([
+    'trackEvent',
+    'Accesibilidad',
+    'Vista simplificada',
+    eventName,
+  ])
+})
+
+watch(tipografiaAccesible, () => {
+  const matomoPaq = globalThis._paq || { push() {} }
+  const eventName = tipografiaAccesible.value ? 'activacion' : 'desactivacion'
+  matomoPaq.push([
+    'trackEvent',
+    'Accesibilidad',
+    'Tipografía accesible',
+    eventName,
+  ])
+})
+
+watch(enlacesSubrayados, () => {
+  const matomoPaq = globalThis._paq || { push() {} }
+  const eventName = enlacesSubrayados.value ? 'activacion' : 'desactivacion'
+  matomoPaq.push([
+    'trackEvent',
+    'Accesibilidad',
+    'Enlaces subrayados',
+    eventName,
+  ])
+})
+
+watch(menuAccesiblidadAbierto, () => {
+  const matomoPaq = globalThis._paq || { push() {} }
+  const eventName = menuAccesiblidadAbierto.value ? 'abriendo' : 'cerrando'
+  matomoPaq.push([
+    'trackEvent',
+    'Accesibilidad',
+    'Abrir y colapsar menú',
+    eventName,
+  ])
+})
+
 watch(
   () => ruta.path,
   () => {
@@ -51,13 +110,26 @@ watch(
   }
 )
 
+/**
+ * Mueve el foco de navegación al contenido del documento o
+ * todo el contenido, dependiendo si la ruta tiene más de
+ * una carpeta anidada o no
+ */
 function moviendoFocoNavegacion(path) {
-  path
-  //let carpetas = path.split('/').filter(d => d != '')
-  const elemento_receptor = document.querySelector('#principal')
-  if (elemento_receptor) {
-    elemento_receptor.tabIndex = '-1'
-    elemento_receptor.focus()
+  let carpetas = path.split('/').filter(d => d !== '')
+
+  if (carpetas.length >= 1) {
+    const elemento_receptor = document.querySelector('#contenido-documento')
+    if (elemento_receptor) {
+      elemento_receptor.tabIndex = '-1'
+      elemento_receptor.focus({ preventScroll: true })
+    }
+  } else {
+    const elemento_receptor = document.querySelector('#contenido-todo')
+    if (elemento_receptor) {
+      elemento_receptor.tabIndex = '-1'
+      elemento_receptor.focus({ preventScroll: true })
+    }
   }
 }
 </script>
@@ -72,18 +144,123 @@ function moviendoFocoNavegacion(path) {
       class="ir-contenido-principal"
     >Ir a contenido principal</a
     >
+
     <SisdaiNavegacionGobMx />
-    <NavegacionPrincipalBase />
+    <SisdaiNavegacionPrincipal
+      :navInformacion="`Sección: <b>${$route.name}</b>`"
+    >
+      <ul class="nav-menu">
+        <li>
+          <router-link
+            class="nav-hipervinculo"
+            to="/"
+            exact
+          >
+            Inicio
+          </router-link>
+        </li>
+        <li>
+          <router-link
+            class="nav-hipervinculo"
+            to="/disenio/"
+          >
+            Diseño
+          </router-link>
+        </li>
+        <li>
+          <router-link
+            class="nav-hipervinculo"
+            to="/desarrollo/"
+          >
+            Desarrollo
+          </router-link>
+        </li>
+        <li>
+          <router-link
+            class="nav-hipervinculo"
+            to="/accesibilidad/"
+          >
+            Accesibilidad
+          </router-link>
+        </li>
+        <li>
+          <router-link
+            class="nav-hipervinculo"
+            to="/catalogo/"
+          >
+            Catálogo
+          </router-link>
+        </li>
+        <li>
+          <router-link
+            class="nav-hipervinculo"
+            to="/acceso-abierto"
+          >
+            Acceso Abierto
+          </router-link>
+        </li>
+        <li>
+          <router-link
+            class="nav-hipervinculo"
+            to="/acerca-de"
+          >
+            Acerca de
+          </router-link>
+        </li>
+      </ul>
+    </SisdaiNavegacionPrincipal>
 
-    <router-view />
-
-    <SisdaiMenuAccesibilidad :objetoStore="store" />
-    <SisdaiInfoDeDespliegue
-      :versionProyecto="infoDespliegue.version_proyecto"
-      :entornoProyecto="infoDespliegue.entorno_proyecto"
-      :actualizacionProyecto="infoDespliegue.actualizacion_proyecto"
+    <router-view id="contenido-todo" />
+    <SisdaiMenuAccesibilidad
+      ref="sisdaiMenuAccesibilidad"
+      :objetoStore="store"
+      perfilColor="sisdai"
     />
+
+    <SisdaiBotonFlotante
+      :enlaces="[
+        {
+          clasesCss: 'eni',
+          contenido: 'Ir a ENI',
+          enlace: 'https://eni.conahcyt.mx/',
+        },
+        {
+          clasesCss: 'gema',
+          contenido: 'Ir a GEMA',
+          enlace: 'https://gema.conahcyt.mx/',
+        },
+      ]"
+    />
+
+    <SisdaiInfoDeDespliegue
+      :entornoProyecto="infoDespliegue.entornoProyecto"
+      :versionProyecto="infoDespliegue.versionProyecto"
+      :actualizacionProyecto="infoDespliegue.actualizacionProyecto"
+    />
+
     <SisdaiPiePaginaConahcyt />
+
     <SisdaiPiePaginaGobMx />
   </div>
 </template>
+
+<style lang="scss">
+.muestra-color {
+  width: 1rem;
+  height: 1rem;
+  border: 1px solid #707070;
+  border-radius: 50%;
+  position: relative;
+  display: inline-block;
+  transform: translateY(0.125rem);
+  margin-right: 4px;
+}
+
+.a11y-oscura {
+  .oscura-img-blanca {
+    img {
+      filter: grayscale(1) brightness(100);
+    }
+  }
+}
+</style>

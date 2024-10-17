@@ -104,7 +104,6 @@ quieres integrar el proyecto base, ve al paso 4.
    Si tecleas el comando `git remote -v` podrás ver todas las url de los remotos y
    sus nombres.
 
-
 5. Configura el repositorio remoto del sisdai para no bajar los tags ni heads
 
    ```bash
@@ -121,18 +120,17 @@ quieres integrar el proyecto base, ve al paso 4.
    **En caso de que tengas contenido en tu proyecto, resuelve los conflictos que
    te marque git.**
 
+7. Establece la versión adecuada de npm y nvm (previamente instaladas en tu equipo)
 
-8. Establece la versión adecuada de npm y nvm (previamente instaladas en tu equipo)
+   ```bash
+   nvm use 20
+   ```
 
-    ```bash
-    nvm use 20
-    ```
+8. Instala las dependencias de la biblioteca
 
-9. Instala las dependencias de la biblioteca
-
-    ```bash
-    npm install
-    ```
+   ```bash
+   npm install
+   ```
 
 Ahora ya puedes integrar tus cambios a otras ramas o subirlos al repositorio
 original. Puedes borrar el _remote_ del proyecto base y conservar solamente
@@ -148,24 +146,25 @@ obtener cambios del proyecto base si los necesitas.
     "name": "nombre-del-proyecto-nuevo",
     "version": "0.1.0",
     ```
-   En este punto ya puedes subir la rama _main_ a tu repositorio de código (_origin_).
-   A partir de aquí te recomendamos seguir el [versionamiento semántico y flujo
-   entre ramas](https://codigo.conahcyt.mx/sisdai/sisdai-anexos/-/blob/main/03_versionamiento-semantico.md?ref_type=heads) que puedes encontrar en [sisdai-anexos](https://codigo.conahcyt.mx/sisdai/sisdai-anexos).
+
+    En este punto ya puedes subir la rama _main_ a tu repositorio de código (_origin_).
+    A partir de aquí te recomendamos seguir el [versionamiento semántico y flujo
+    entre ramas](https://codigo.conahcyt.mx/sisdai/sisdai-anexos/-/blob/main/03_versionamiento-semantico.md?ref_type=heads) que puedes encontrar en [sisdai-anexos](https://codigo.conahcyt.mx/sisdai/sisdai-anexos).
 
 11. Modifica el archivo de variables de ambiente `.env` de acuerdo a las
-   necesidades del
-   proyecto.
-   Para cada ambiente es necesario modificar el archivo de ambiente
-   correspondiente, el `.env` es para el entorno local, `.env.desarrollo` para
-   un ambiente de desarrollo, `.env.preproduccion` para un ambiente de
-   preproducción, y `.env.production` para un ambiente de
-   producción. Se dejan por defecto estos cuatro archivos en el proyecto, pero
-   pueden crearse o eliminarse de acuerdo al mismo. También se dejan en los
-   archivos, variables de ambiente por defecto que se usan en este proyecto base
-   y
-   que son propias de los capítulos de los ENI, sin embargo se deben agregar o
-   quitar de acuerdo al proyecto a desarrollar. Se deja aquí el ejemplo del
-   archivo de ambiente local `.env`.
+    necesidades del
+    proyecto.
+    Para cada ambiente es necesario modificar el archivo de ambiente
+    correspondiente, el `.env` es para el entorno local, `.env.desarrollo` para
+    un ambiente de desarrollo, `.env.preproduccion` para un ambiente de
+    preproducción, y `.env.production` para un ambiente de
+    producción. Se dejan por defecto estos cuatro archivos en el proyecto, pero
+    pueden crearse o eliminarse de acuerdo al mismo. También se dejan en los
+    archivos, variables de ambiente por defecto que se usan en este proyecto base
+    y
+    que son propias de los capítulos de los ENI, sin embargo se deben agregar o
+    quitar de acuerdo al proyecto a desarrollar. Se deja aquí el ejemplo del
+    archivo de ambiente local `.env`.
 
     ```js
     // modo del ambiente en el que se levanta el proyecto
@@ -210,21 +209,21 @@ obtener cambios del proyecto base si los necesitas.
 
 13. Para levantar el proyecto en un servidor local
 
-   ```bash
-   npm run dev
-   ```
+```bash
+npm run dev
+```
 
 14. Para compilar el proyecto en un ambiente de desarrollo
 
-   ```bash
-   npm run build:dev
-   ```
+```bash
+npm run build:dev
+```
 
 15. Para compilar el proyecto en un ambiente de producción
 
-   ```bash
-   npm run build
-   ```
+```bash
+npm run build
+```
 
 En el `package.json` por defecto se incluyen otras instrucciones que te pueden
 ayudar a revisar el proyecto.
