@@ -48,10 +48,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://codigo.conahcyt.mx/sisdai/sisdai-proyecto-base"
+    "url": "https://codigo.conahcyt.mx/eni/eni-capitulo-demo"
   },
   "bugs": {
-    "url": "https://codigo.conahcyt.mx/sisdai/sisdai-proyecto-base/issues"
+    "url": "https://codigo.conahcyt.mx/eni/eni-capitulo-demo/issues"
   },
-  "homepage": "https://codigo.conahcyt.mx/sisdai/sisdai-proyecto-base#readme"
+  "homepage": "https://codigo.conahcyt.mx/eni/eni-capitulo-demo#readme"
 }

@@ -19,6 +19,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import SisdaiComponentes from 'sisdai-componentes/src/index'
+import 'sisdai-css/dist/sisdai.min.css'
 
 // Componentes y directivas de la biblioteca
 Vue.use(SisdaiComponentes)

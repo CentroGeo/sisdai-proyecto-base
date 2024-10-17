@@ -1,4 +1,22 @@
-# sisdai-proyecto-base
+### <span style="color:red">IMPORTANTE</span>
+
+**Esta es una versión deprecada del capítulo demo por lo que ya no se le da
+mantenimiento. Es responsabilidad de la persona usuaria estar al tanto de los
+cambios en las bibliotecas del Sisdai, consultado los releases y/o CHANGELOG.md
+de los repositorios.**
+
+**Contenido de esta versión**
+- Hecha en Vue 2
+- Vista de Créditos
+- Vista de Investigadoras
+- Vista de Visualizaciones
+- Menú de accesibilidad
+
+**Para consultar cambios y actualizaciones de este proyecto ir al archivo
+CHANGELOG.md**
+<hr>
+
+# eni-capitulo-demo
 
 Este repositorio contiene el proyecto base para levantar una página web con los
 requerimientos mínimos para un proyecto que utilice
@@ -29,16 +47,20 @@ en su equipo a través del **protocolo HTTPS**.
 ### Contenido del proyecto
 
 | Elemento                    | Ubicacion                  | Descripción                                                                                                                                                            |
-| --------------------------- | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|-----------------------------| -------------------------- |------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | main.js                     | src/                       | Archivo en donde estan precargados sisdai-css y sisdai-componentes y se configura el matomo                                                                            |
 | App.vue                     | src/                       | Archivo con la estructura basica de un proyecto, como cabeceras, pies de página, barra de navegación, menú de accesibilidad y componente con información de despliegue |
 | PaginaInicio.vue            | src/views/                 | Vista en Vue con un ejemplo de portada para iniciar el contenido de un nuevo capitulo eni                                                                              |
+| PaginaVisualizaciones.vue   | src/views/| Vista en Vue con un ejemplo de una gráfica de barras y un mapa base.                                                                                                   |
+| PaginaCreditos.vue          |src/views| Vista en Vue con ejemplos de créditos para organizaciones y personas investigadoras.                                                                                   |
+| PaginaInvestigadora.vue     |src/views| Vista en Vue de un perfil de persona investigadora.|
+| PaginaOtraVista.vue         |src/views|Ejemplo de una vista en Vue vacía.|
 | NavegacionPrincipalBase.vue | src/components/nagevacion/ | Utilizando la base de componente de navegación, en este componente se pueden actualizar los links del menú del sitio                                                   |
 
 #### Ubicación de los archivos
 
 ```bash
-sisdai-proyecto-base/
+eni-capitulo-demo/
 └── src/
     ├── main.js
     ├── App.vue
@@ -49,6 +71,11 @@ sisdai-proyecto-base/
     │   └── index.js #variables accesibilidad
     └── views/
         └── PaginaInicio.vue
+        └── PaginaVisualizaciones.vue
+        └── PaginaCreditos.vue
+        └── PaginaInvestigadora.vue
+        └── PaginaOtraVista.vue
+        └── ErrorPaginaNoEncontrada.vue
 ```
 
 ## Instalación y uso
@@ -98,7 +125,7 @@ quieres integrar el proyecto base, ve al paso 4.
 4. Agrega el remoto del proyecto base.
 
    ```bash
-   git remote add sisdai-proyecto-base https://codigo.conahcyt.mx/sisdai/sisdai-proyecto-base.git
+   git remote add eni-capitulo-demo https://codigo.conahcyt.mx/sisdai/eni-capitulo-demo.git
    ```
 
    Si tecleas el comando `git remote -v` podrás ver todas las url de los remotos y
@@ -107,14 +134,14 @@ quieres integrar el proyecto base, ve al paso 4.
 5. Configura el repositorio remoto del sisdai para no bajar los tags ni heads
 
    ```bash
-   git config remote.sisdai-proyecto-base.fetch '+refs/heads/*:refs/heads/*'
-   git config remote.sisdai-proyecto-base.tagopt --no-tags
+   git config remote.eni-capitulo-demo.fetch '+refs/heads/*:refs/heads/*'
+   git config remote.eni-capitulo-demo.tagopt --no-tags
    ```
 
-6. Baja los últimos cambios del sisdai-proyecto-base
+6. Baja los últimos cambios del eni-capitulo-demo
 
    ```bash
-   git pull --no-rebase sisdai-proyecto-base main --allow-unrelated-histories
+   git pull --no-rebase eni-capitulo-demo main --allow-unrelated-histories
    ```
 
    **En caso de que tengas contenido en tu proyecto, resuelve los conflictos que
@@ -171,7 +198,7 @@ obtener cambios del proyecto base si los necesitas.
     NODE_ENV = local
 
     // título del proyecto, este aparecerá en la pestaña del navegador
-    VUE_APP_TITLE = local | sisdai-proyecto-base
+    VUE_APP_TITLE = local | eni-capitulo-demo
 
     // descripción del proyecto, se utiliza para agregar metadatos para el navegador
     VUE_APP_DESCRIPTION = local | descripcion
@@ -228,7 +255,7 @@ npm run build
 En el `package.json` por defecto se incluyen otras instrucciones que te pueden
 ayudar a revisar el proyecto.
 
-La licencia incluída aquí es únicamente para sisdai-proyecto-base. Una vez
+La licencia incluída aquí es únicamente para eni-capitulo-demo. Una vez
 que tengas tu propio proyecto deberás modificar la licencia de acuerdo con
 los lineamientos del proyecto [GNU](https://www.gnu.org/licenses/licenses.html).
 
@@ -242,7 +269,7 @@ la puedes encontrar en el archivo `linter.md`.
 
 **SOFTWARE LIBRE Y ESTÁNDARES ABIERTOS**
 
-Sisdai y sisdai-proyecto-base están alineadas a las disposiciones establecidas
+Sisdai y eni-capitulo-demo están alineadas a las disposiciones establecidas
 por
 la Coordinación de Estrategia Digital Nacional (
 DOF:06/09/2021) en donde se estipula que las "políticas y disposiciones tienen
@@ -254,7 +281,7 @@ artículo 63 se explicita que "cuando se trate
 de desarrollos basados en software libre, se respetarán las condiciones de su
 licenciamiento original [...]".
 
-Considerando lo anterior sisdai-proyecto-base se publica bajo la licencia
+Considerando lo anterior eni-capitulo-demo se publica bajo la licencia
 [LGPLv3](https://www.gnu.org/licenses/lgpl-3.0.html). Dicha licencia se puede
 consultar en el archivo _LICENSE_ de este repositorio.
 Esta licencia se encuentra disponible en inglés porque aunque el Sisdai
