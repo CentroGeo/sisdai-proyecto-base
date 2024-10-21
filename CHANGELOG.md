@@ -5,7 +5,7 @@ Todos los cambios importantes de este proyecto se documentan en este archivo.
 El formato está basado en [Keep a Changelog](https://keepachangelog.com/en/1.1.0)
 y este proyecto se adhiere al [Versionamiento semántico](https://semver.org/spec/v2.0.0.html).
 
-## [3.0.0] - 2024-10-21
+## [3.0.2] - 2024-10-21
 
 ### Cambiado (Changed)
 
@@ -52,7 +52,6 @@ Identidad gráfica del gobierno federal para el periodo 2018-2024
 - Nombre de **sisdai-proyecto-base** por **eni-capitulo-demo**
 - Enlaces a MinIO
 
-[3.1.0]: https://codigo.conahcyt.mx/eni/eni-capitulo-demo/compare/v3.1.0...v3.0.0
-[3.0.0]: https://codigo.conahcyt.mx/eni/eni-capitulo-demo/compare/v3.0.0...v2.3.0
+[3.0.2]: https://codigo.conahcyt.mx/eni/eni-capitulo-demo/compare/v3.0.2...v2.3.0
 [2.3.0]: https://codigo.conahcyt.mx/eni/eni-capitulo-demo/compare/v2.3.0...v2.2.0
 [2.2.0]: https://codigo.conahcyt.mx/eni/eni-capitulo-demo/compare/v2.2.0...v2.1.0
